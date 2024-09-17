@@ -1,41 +1,38 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, { useState } from 'react'; // Import useState from React
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import About from './components/About';
+import InputData from './components/InputData';
+import ViewAll from './components/ViewAll';
+import Sidebar from './reusable/Sidebar';  
+import Header from './reusable/Header'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/index.css';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // State to toggle sidebar
+
+  // Toggle Sidebar function
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen); // Toggle the state
+  };
+
   return (
     <Router>
-      <div className="d-flex">
+      <div className="d-flex min-vh-100">
         {/* Sidebar */}
-        <div className="bg-dark text-white p-3 vh-100" style={{ width: '250px' }}>
-          <h4 className="text-center text-info">Simple Crud</h4>
-          <ul className="nav flex-column">
-            <li className="nav-item">
-              <Link className="nav-link text-white" to="/">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-white" to="/about">About</Link>
-            </li>
-          </ul>
-        </div>
+        {isSidebarOpen && <Sidebar />} {/* Show Sidebar only when isSidebarOpen is true */}
 
         {/* Main Content Area */}
-        <div className="flex-grow-1">
+        <div className="flex-grow-1 d-flex flex-column">
           {/* Top Navbar */}
-          <nav className="border navbar navbar-expand-lg navbar-light bg-light py-2">
-            <div className="container-fluid">
-              <span className="navbar-brand mb-0">Dashboard Navbar</span>
-            </div>
-          </nav>
+          <Header toggleSidebar={toggleSidebar} /> {/* Pass toggleSidebar function as prop */}
 
           {/* Page Content */}
-          <div className="container-fluid mt-4">
+          <div className="container-fluid flex-grow-1 bg-light">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/InputData" element={<InputData />} />
+              <Route path="/ViewAll" element={<ViewAll />} />
             </Routes>
           </div>
         </div>

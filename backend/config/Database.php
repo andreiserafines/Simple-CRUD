@@ -1,11 +1,10 @@
-// backend/config/database.php
 <?php
 class Database
 {
     private $host = "localhost";
-    private $db_name = "yourdatabase";
+    private $db_name = "crud-reactphp";
     private $username = "root";
-    private $password = "yourpassword";
+    private $password = "";
     public $conn;
 
     public function getConnection()
@@ -17,7 +16,6 @@ class Database
         } catch (PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
         }
-
         return $this->conn;
     }
 }
