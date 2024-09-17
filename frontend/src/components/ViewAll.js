@@ -119,7 +119,7 @@ const ViewAll = () => {
                 </nav>
             </div>
 
-            <div className="p-3 rounded-2 shadow-sm bg-white">
+            <div className="p-3 rounded-2 shadow-sm bg-white border-tops">
                 <table className="table table-striped">
                     <thead>
                         <tr>

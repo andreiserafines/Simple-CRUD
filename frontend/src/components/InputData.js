@@ -53,7 +53,7 @@ const InputData = () => {
                 </nav>
             </div>
 
-            <div className="p-3 rounded-2 shadow-sm bg-white col-4 border-tops">
+            <div className="p-3 rounded-2 shadow-sm bg-white container-sm border-tops">
                 <p className="mb-4 text-dark mb-3">Insert New Record</p>
                 {message && <p className="alert alert-info">{message}</p>}
                 <form onSubmit={handleSubmit}>
